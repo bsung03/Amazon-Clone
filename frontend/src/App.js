@@ -25,9 +25,6 @@ function App() {
                   ))
                 }
 
-                  
-
-
               </div>
 
           </main>
