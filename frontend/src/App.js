@@ -1,13 +1,18 @@
 
 import './index.css';
 import Product from './components/Product';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import CartScreen from './Screens/CartScreen';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+
+  const cart = useSelector((state) => state.cart);
+  const {cartitems} = cart;
+
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -16,11 +21,16 @@ function App() {
 
         <header className="row">
             <div>
-                <a className="brand" href='/'>Amazona</a>
+                <Link className="brand" to='/'>Amazona</Link>
             </div>
             <div>
-                <a href="/cart">Cart</a>
-                <a href="/signin">Sign In</a>
+                <Link to="/cart">
+                  Cart
+                  {cartitems.length > 0 && (
+                    <span className='badge'>{cartitems.length}</span>
+                  )}
+                </Link>
+                <Link to="/signin">Sign In</Link>
             </div>
         </header>
 
