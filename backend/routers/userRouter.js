@@ -20,9 +20,9 @@ userRouter.post('/signin', expressAsyncHandler(async(req,res) => {
             });
             return;
         }
-    }else{
-        res.status(401).send({message: "Invalid email or password"});
     }
+    res.status(401).send({ message: "Invalid email or password" });
+
 }))
 
 userRouter.get('/seed/', expressAsyncHandler( async(req,res) => {
