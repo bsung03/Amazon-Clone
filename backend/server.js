@@ -2,10 +2,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
+import dotenv from 'dotenv';
 
+
+
+dotenv.config()
 const app = express();
 // eslint-disable-next-line no-undef
-mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://Brandon:stephanie12@cluster0.gx035.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex:true
