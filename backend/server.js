@@ -8,6 +8,11 @@ import dotenv from 'dotenv';
 
 dotenv.config()
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
+
 // eslint-disable-next-line no-undef
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
