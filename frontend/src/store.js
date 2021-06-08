@@ -5,16 +5,24 @@ import { productDetailsReducer, productListReducer } from "./reducers/productRed
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducers';
 
 const initalState = {
-    cart: {
-        cartitems: localStorage.getItem('cartitems') ? 
-        JSON.parse(localStorage.getItem('cartitems')) :
-        []
-    },
     userSignin : {
         userInfo: localStorage.getItem('userInfo') ?
         JSON.parse(localStorage.getItem('userInfo')) :
         null
-    }
+    },
+    cart: {
+        cartitems: localStorage.getItem('cartitems') ? 
+        JSON.parse(localStorage.getItem('cartitems')) :
+        [],
+
+        paymentMethod: 'PayPal',
+
+        shippingAddress: localStorage.getItem('shippingAddress') ? 
+        JSON.parse(localStorage.getItem('shippingAddress')) :
+        {},
+
+    },
+
 };
 const reducer = combineReducers({
     productList: productListReducer,

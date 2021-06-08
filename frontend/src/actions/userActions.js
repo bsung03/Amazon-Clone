@@ -1,4 +1,5 @@
 import axios from "axios"
+import { CART_REMOVE_SHIPPING_ADDRESS } from "../constants/cartConstants";
 import { USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SIGNOUT, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT } from "../constants/userConstants"
 
 
@@ -40,8 +41,9 @@ export const signin = (email, password) => async(dispatch) => {
 
 export const signout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
-
+    localStorage.removeItem('shippingAddress');
     localStorage.removeItem('cartitems');
     dispatch({type: USER_SIGNOUT});
+    dispatch({type: CART_REMOVE_SHIPPING_ADDRESS})
     dispatch({type: USER_REGISTER_SIGNOUT})
 }
